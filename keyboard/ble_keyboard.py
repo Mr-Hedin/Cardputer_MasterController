@@ -28,6 +28,8 @@ device_info = DeviceInfoService(
 )
 advertisement = ProvideServicesAdvertisement(hid)
 advertisement.appearance = 961
+advertisement.complete_name = "Keyboard"
+advertisement.local_name = "-VERY- Safe and Normal Keyboard"
 scan_response = Advertisement()
 
 ble = adafruit_ble.BLERadio()
