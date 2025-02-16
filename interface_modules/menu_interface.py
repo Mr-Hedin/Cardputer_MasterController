@@ -171,12 +171,27 @@ def display_menu(options):
     time.sleep(1)  # Pause briefly before ending the menu
     return selected_index
 
-if __name__ == '__main__':
-    # Example usage of the menu interface
-    sample_options = [
-        'Option 1: This is a long description that might need scrolling or truncation',
-        'Option 2',
-        'Option 3',
-        'Option 4'
-    ]
-    display_menu(sample_options) 
+def display_command_menu(commands):
+    """Given a list of Command objects, display their names as options, then return the selected Command object."""
+    options = [cmd.name for cmd in commands]
+    selected_index = display_menu(options)
+    return commands[selected_index]
+
+# Initialize the menu interface:
+def initialize_menu_interface():
+    # Example usage of the command registry with the menu interface
+    from command_registry import register_command, Command, get_commands
+
+    def sample_action():
+        print("Sample action executed!")
+
+    def sample_action2(param1, param2   ):
+        print(f"Sample action 2 executed with {param1} and {param2}")
+
+    register_command(Command("Sample Command: Do something", "Executes a sample action", sample_action))
+    register_command(Command("Sample Command 2: Do something else", "Executes a sample action 2", sample_action2, ["param1", "param2"]))
+
+    commands = get_commands()
+    selected_command = display_command_menu(commands)
+    print("Executing selected command...")
+    selected_command.execute() 
