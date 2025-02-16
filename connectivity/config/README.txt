@@ -1,0 +1,1 @@
+Configuration files in this directory are organized by device MAC address. Each file corresponds to a device and stores its configuration and available commands. 
